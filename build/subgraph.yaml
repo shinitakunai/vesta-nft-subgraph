@@ -1,14 +1,15 @@
 specVersion: 0.0.2
+description: Vesta V-key nfts
 schema:
   file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: Token
-    network: mainnet
+    network: arbitrum-one
     source:
-      address: "0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405"
+      address: "0x17f4BAa9D35Ee54fFbCb2608e20786473c7aa49f"
       abi: Token
-      startBlock: 11648721
+      startBlock: 3572696
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -20,8 +21,6 @@ dataSources:
         - name: Token
           file: Token/abis/Token.json
       eventHandlers:
-        - event: TokenIPFSPathUpdated(indexed uint256,indexed string,string)
-          handler: handleTokenIPFSPathUpdated
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
       file: Token/Token.wasm

@@ -7,10 +7,17 @@ type Token @entity {
   createdAtTimestamp: BigInt!
   creator: User!
   owner: User!
+  tier: TokenTier!
 }
 
 type User @entity {
   id: ID!
   tokens: [Token!]! @derivedFrom(field: "owner")
   created: [Token!]! @derivedFrom(field: "creator")
+}
+
+enum TokenTier {
+  Bronze
+  Silver
+  Gold
 }
