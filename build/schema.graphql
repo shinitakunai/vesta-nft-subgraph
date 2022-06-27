@@ -2,7 +2,7 @@ type Token @entity {
   id: ID!
   tokenID: BigInt!
   contentURI: String
-  tokenIPFSPath: String
+  # tokenIPFSPath: String
   name: String!
   createdAtTimestamp: BigInt!
   creator: User!

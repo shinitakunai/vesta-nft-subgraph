@@ -76,23 +76,6 @@ export class Token extends Entity {
     }
   }
 
-  get tokenIPFSPath(): string | null {
-    let value = this.get("tokenIPFSPath");
-    if (!value || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toString();
-    }
-  }
-
-  set tokenIPFSPath(value: string | null) {
-    if (!value) {
-      this.unset("tokenIPFSPath");
-    } else {
-      this.set("tokenIPFSPath", Value.fromString(<string>value));
-    }
-  }
-
   get name(): string {
     let value = this.get("name");
     return value!.toString();

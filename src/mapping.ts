@@ -1,5 +1,5 @@
 import {
-  TokenIPFSPathUpdated as TokenIPFSPathUpdatedEvent,
+  // TokenIPFSPathUpdated as TokenIPFSPathUpdatedEvent,
   Transfer as TransferEvent,
   Token as TokenContract,
 } from "../generated/Token/Token";
@@ -16,18 +16,15 @@ export function handleTransfer(event: TransferEvent): void {
 
     let tokenContract = TokenContract.bind(event.address);
     token.contentURI = tokenContract.tokenURI(tokenId);
-    token.tokenIPFSPath = tokenContract.getTokenIPFSPath(tokenId);
+    // token.tokenIPFSPath = tokenContract.getTokenIPFSPath(tokenId);
     token.name = tokenContract.name();
     token.createdAtTimestamp = event.block.timestamp;
-
     if (tokenId.toU64() < 1000000) {
-      token.tier = "bronze";
-    }
-    if (tokenId.toU64() < 2000000) {
-      token.tier = "silver";
-    }
-    if (tokenId.toU64() < 3000000) {
-      token.tier = "gold";
+      token.tier = "Bronze";
+    } else if (tokenId.toU64() < 2000000) {
+      token.tier = "Silver";
+    } else if (tokenId.toU64() < 3000000) {
+      token.tier = "Gold";
     }
   }
   token.owner = event.params.to.toHexString();
